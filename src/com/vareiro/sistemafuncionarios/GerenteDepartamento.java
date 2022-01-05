@@ -4,11 +4,25 @@ import java.util.ArrayList;
 
 public class GerenteDepartamento extends FuncionarioPadrao {
     private String dept;
-    private ArrayList<LiderTecnico> listaLideresTecnicos = new ArrayList<>();
+    private static ArrayList<GerenteDepartamento> listaGerenteDepartamento = new ArrayList<>();
 
     public GerenteDepartamento(String cpf, String nome, String telefone, String endereco, String dept) {
         super(cpf, nome, telefone, endereco);
         this.dept = dept;
+    }
+
+    public void alteraDados(String novoTelefone, String novoEndereco,String novoDept){
+        setTelefone(novoTelefone);
+        setEndereco(novoEndereco);
+        this.dept = novoDept;
+    }
+
+    public static GerenteDepartamento procuraGerenteDepartamento(String cpf){
+        for(GerenteDepartamento a : listaGerenteDepartamento){
+            if(cpf.equals(a.getCpf()))
+                return a;
+        }
+        return null;
     }
 
     @Override

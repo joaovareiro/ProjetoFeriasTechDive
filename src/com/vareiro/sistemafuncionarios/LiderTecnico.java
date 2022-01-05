@@ -11,6 +11,11 @@ public class LiderTecnico extends FuncionarioPadrao {
         this.dept = dept;
     }
 
+    public void alteraDados(String novoTelefone, String novoEndereco,String novoDept){
+        setTelefone(novoTelefone);
+        setEndereco(novoEndereco);
+        this.dept = novoDept;
+    }
 
     @Override
     public String identificacao(){
@@ -23,12 +28,9 @@ public class LiderTecnico extends FuncionarioPadrao {
                 " ; " + isEmpregado();
     }
 
-    public void alteraDados(String telefone, String endereco){
-    }
-
     public static LiderTecnico procuraLiderTecnico(String cpf){
         for(LiderTecnico a : listaLideresTecnicos){
-            if(getCpf(a)==cpf)
+            if(cpf.equals(a.getCpf()))
                 return a;
         }
         return null;
