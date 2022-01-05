@@ -7,7 +7,7 @@ public abstract class MenuFuncionario{
     public static void menuInicial(){
         int op;
         while(true) {
-            System.out.println("-----SISTEMA FUNCIONARIOS TECH-DIVE-----");
+            System.out.println("----- SISTEMA FUNCIONARIOS TECH-DIVE -----");
             System.out.println("""
                     Selecione uma opcao:\s
                     1 - Adicionar funcionário
@@ -42,14 +42,10 @@ public abstract class MenuFuncionario{
                 int op1 = sc.nextInt();
                 switch (op1) {
                     case 1:
+                        sc.nextLine();
                         System.out.printf("Digite o cpf do lider tecnico\n");
-                        String cpfprocurar = sc.nextLine();
-                        //add try catch aqui
-                        if (LiderTecnico.procuraLiderTecnico(cpfprocurar) != null) {
-                            Colaborador c1 = new Colaborador(cpfNovo, nomeNovo, telefoneNovo, enderecoNovo, deptNovo, LiderTecnico.procuraLiderTecnico(cpfprocurar));
-                        } else {
-
-                        }
+                        String cpfLider = sc.nextLine();
+                        Colaborador c1 = new Colaborador(cpfNovo, nomeNovo, telefoneNovo, enderecoNovo, deptNovo, cpfLider);
                         break;
                     case 2:
                         LiderTecnico lt1 = new LiderTecnico(cpfNovo, nomeNovo, telefoneNovo, enderecoNovo, deptNovo);
@@ -63,24 +59,21 @@ public abstract class MenuFuncionario{
                     }
                 }
                 else if (op == 2) {
+
                     System.out.printf("Digite o cpf do funcionario que voce deseja encontrar \n");
                     sc.nextLine();
                     String cpfNovo = sc.nextLine();
-                    if(FuncionarioPadrao.procuraColaborador(cpfNovo)==null){
-                        System.out.println("funcionario nao encontrado");
-                    }else{
-                        System.out.println(FuncionarioPadrao.procuraColaborador(cpfNovo).identificacao());
-                    }
+                    FuncionarioPadrao.infoFuncionario(cpfNovo);
 
                 } else if (op == 3) {
-                    System.out.printf("Digite o cpf do funcionario que voce deseja encontrar");
+                    //fix
+                    System.out.printf("Digite o cpf do funcionario que voce deseja demitir: \n");
                     sc.nextLine();
                     String cpfNovo = sc.nextLine();
-                    if(FuncionarioPadrao.procuraColaborador(cpfNovo)==null){
-                        System.out.println("funcionario nao encontrado");
-                    }else{
-                        System.out.println(FuncionarioPadrao.procuraColaborador(cpfNovo));
-                    }
+                    FuncionarioPadrao.demiteFuncionario(cpfNovo);
+
+                } else if (op == 4) {
+
                 } else if (op == 5) {
                     FuncionarioPadrao.listaTodosFuncionariosSistema();
                 } else if (op == 6) {

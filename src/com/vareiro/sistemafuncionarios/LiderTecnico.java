@@ -5,11 +5,22 @@ import java.util.ArrayList;
 public class LiderTecnico extends FuncionarioPadrao {
     private String dept;
     private static ArrayList<LiderTecnico> listaLideresTecnicos = new ArrayList<>();
-    private ArrayList<FuncionarioPadrao> listaColaboradores = new ArrayList<>();
 
     public LiderTecnico(String cpf, String nome, String telefone, String endereco, String dept) {
         super(cpf, nome, telefone, endereco);
         this.dept = dept;
+    }
+
+
+    @Override
+    public String identificacao(){
+        return "Lider tecnico" +
+                " ; cpf: " + getCpf() +
+                " ; nome: " + getNome() +
+                " ; telefone: " + getTelefone()+
+                " ; endereco: " + getEndereco() +
+                " ; departamento: " + dept +
+                " ; " + isEmpregado();
     }
 
     public void alteraDados(String telefone, String endereco){
@@ -22,4 +33,10 @@ public class LiderTecnico extends FuncionarioPadrao {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return identificacao();
+    }
+
 }

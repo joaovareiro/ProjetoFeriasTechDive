@@ -19,22 +19,23 @@ public abstract class FuncionarioPadrao implements Funcionario {
         listaTodosFuncionarios.add(this);
     }
 
-    @Override
-    public String identificacao(){
-            return "Colaborador" +
-                    " cpf: " + cpf +
-                    " ; nome: " + nome  +
-                    " ; telefone: " + telefone+
-                    " ; endereco: " + endereco + " ; " +
-                    isEmpregado();
+    public String getCpf() {
+        return cpf;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
     public static String getCpf(FuncionarioPadrao a) {
         return a.cpf;
-    }
-    public void alteraStatus(String cpf){
-        if(procuraColaborador(cpf)!=null){
-        }
     }
 
     public void setStatus(boolean status) {
@@ -49,14 +50,31 @@ public abstract class FuncionarioPadrao implements Funcionario {
         }
     }
 
-    public static FuncionarioPadrao procuraColaborador(String cpf){
-        for(FuncionarioPadrao a : listaTodosFuncionarios){
-            if(getCpf(a)==cpf)
-                return a;
+    public static void demiteFuncionario(String cpfprocurar){
+        int cont = 0;
+        for(FuncionarioPadrao b : listaTodosFuncionarios){
+            if(cpfprocurar.equals(b.cpf)) {
+                cont ++;
+                b.setStatus(false);
+            }
         }
-        return null;
+        if(cont == 0){
+            System.out.println("Funcionario nao encontrado");
+        }
     }
 
+    public static void infoFuncionario(String cpfprocurar){
+        int cont = 0;
+        for(FuncionarioPadrao b : listaTodosFuncionarios){
+            if(cpfprocurar.equals(b.cpf))  {
+                cont ++;
+                System.out.println(b.toString());
+            }
+        }
+        if(cont == 0){
+            System.out.println("Funcionario nao encontrado");
+        }
+    }
     public static void listaTodosFuncionariosSistema(){
         for(FuncionarioPadrao a : listaTodosFuncionarios){
             System.out.println(a);
@@ -77,5 +95,16 @@ public abstract class FuncionarioPadrao implements Funcionario {
                 System.out.println(a);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "FuncionarioPadrao{" +
+                "cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

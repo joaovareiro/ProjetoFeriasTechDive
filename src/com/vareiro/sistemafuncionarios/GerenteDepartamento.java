@@ -10,4 +10,21 @@ public class GerenteDepartamento extends FuncionarioPadrao {
         super(cpf, nome, telefone, endereco);
         this.dept = dept;
     }
+
+    @Override
+    public String identificacao(){
+        return "Gerente de Departamento" +
+                " ; cpf: " + getCpf() +
+                " ; nome: " + getNome() +
+                " ; telefone: " + getTelefone()+
+                " ; endereco: " + getEndereco() +
+                " ; departamento: " + dept +
+                " ; " + isEmpregado();
+    }
+
+    @Override
+    public String toString() {
+        return identificacao();
+    }
+
 }
