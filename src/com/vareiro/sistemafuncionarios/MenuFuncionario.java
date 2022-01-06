@@ -7,7 +7,7 @@ public abstract class MenuFuncionario{
     public static void menuInicial() {
         int op;
         while (true) {
-            System.out.println("----- SISTEMA FUNCIONARIOS TECH-DIVE -----");
+            System.out.println("----- SISTEMA DE GERENCIAMENTO DE FUNCIONARIOS TECH-DIVE -----");
             System.out.println("""
                     Selecione uma opcao:\s
                     1 - Adicionar funcionário
