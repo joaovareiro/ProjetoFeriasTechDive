@@ -12,9 +12,9 @@ public abstract class MenuProfessor {
                     1 - Cadastrar turma\s
                     2 - Cadastrar docentes
                     3 - Definir docentes para uma determinada turma
-                    4 - Listar turmas com seus respectivos assuntos, docentes e semanas
+                    4 - Listar turmas
                     5 - Listar todos os docentes
-                    6 - Listar um docente e suas semanas de aula já definidas
+                    6 - Listar um docente
                     7 - Sair""");
 
             op = sc.nextInt();
