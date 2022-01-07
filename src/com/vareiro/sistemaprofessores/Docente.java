@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class Docente {
     private String idDocente;
     private String nomeDocente;
-    private static ArrayList<Turma> listaTurmas = new ArrayList<>();
+    private ArrayList<Turma> listaTurmas = new ArrayList<>();
     private static ArrayList<Docente> listaTodosDocentes = new ArrayList<>();
 
     public Docente(String idDocente, String nomeDocente) {
         this.idDocente = idDocente;
         this.nomeDocente = nomeDocente;
+        listaTodosDocentes.add(this);
     }
 
     public String getIdDocente() {
