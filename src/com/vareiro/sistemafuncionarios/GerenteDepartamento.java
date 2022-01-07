@@ -9,6 +9,7 @@ public class GerenteDepartamento extends FuncionarioPadrao {
     public GerenteDepartamento(String cpf, String nome, String telefone, String endereco, String dept) {
         super(cpf, nome, telefone, endereco);
         this.dept = dept;
+        listaGerenteDepartamento.add(this);
     }
 
     public void alteraDados(String novoTelefone, String novoEndereco,String novoDept){

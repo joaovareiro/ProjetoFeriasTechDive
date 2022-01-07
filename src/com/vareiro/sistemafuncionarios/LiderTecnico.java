@@ -9,6 +9,7 @@ public class LiderTecnico extends FuncionarioPadrao {
     public LiderTecnico(String cpf, String nome, String telefone, String endereco, String dept) {
         super(cpf, nome, telefone, endereco);
         this.dept = dept;
+        listaLideresTecnicos.add(this);
     }
 
     public void alteraDados(String novoTelefone, String novoEndereco,String novoDept){

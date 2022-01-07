@@ -95,24 +95,38 @@ public abstract class MenuFuncionario{
     if(a instanceof Colaborador){
         System.out.printf("Digite o departamento do funcionario \n");
         String deptNovo = sc.nextLine();
-        Colaborador c = Colaborador.procuraColaborador(cpfProcura);
-        c.alteraDados(telefoneNovo,enderecoNovo,deptNovo);
+        if(Colaborador.procuraColaborador(cpfProcura)!=null) {
+            Colaborador.procuraColaborador(cpfProcura).alteraDados(telefoneNovo, enderecoNovo, deptNovo);
+        }else{
+            System.out.println("Colaborador nao encontrado");
+        }
 
     } else if(a instanceof LiderTecnico){
         System.out.printf("Digite o departamento do funcionario \n");
         String deptNovo = sc.nextLine();
-        LiderTecnico lt = LiderTecnico.procuraLiderTecnico(cpfProcura);
-        lt.alteraDados(telefoneNovo,enderecoNovo,deptNovo);
+        if(LiderTecnico.procuraLiderTecnico(cpfProcura)!=null) {
+            LiderTecnico.procuraLiderTecnico(cpfProcura).alteraDados(telefoneNovo, enderecoNovo, deptNovo);
+        }else{
+            System.out.println("Lider tecnico nao encontrado");
+        }
 
     } else if(a instanceof GerenteDepartamento){
             System.out.printf("Digite o departamento do funcionario \n");
             String deptNovo = sc.nextLine();
-            GerenteDepartamento gd = GerenteDepartamento.procuraGerenteDepartamento(cpfProcura);
-            gd.alteraDados(telefoneNovo,enderecoNovo,deptNovo);
+            if(GerenteDepartamento.procuraGerenteDepartamento(cpfProcura)!=null) {
+                GerenteDepartamento.procuraGerenteDepartamento(cpfProcura).alteraDados(telefoneNovo, enderecoNovo, deptNovo);
+            }else{
+                System.out.println("Gerente de Departamento nao encontrado");
+            }
+
     } else if(a instanceof GerenteGeral){
-        GerenteGeral gg = GerenteGeral.procuraGerenteGeral(cpfProcura);
-        gg.alteraDados(telefoneNovo,enderecoNovo);
-    }
+
+        if(GerenteGeral.procuraGerenteGeral(cpfProcura)!=null) {
+            GerenteGeral.procuraGerenteGeral(cpfProcura).alteraDados(telefoneNovo, enderecoNovo);
+        }else{
+            System.out.println("Gerente Geral nao encontrado");
+        }
+        }
     }
 
     public static void main(String[] args) {

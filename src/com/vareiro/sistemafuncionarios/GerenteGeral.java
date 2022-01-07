@@ -7,6 +7,7 @@ public class GerenteGeral extends FuncionarioPadrao {
 
     public GerenteGeral(String cpf, String nome, String telefone, String endereco) {
         super(cpf, nome, telefone, endereco);
+        listaGerenteGeral.add(this);
     }
 
     public void alteraDados(String novoTelefone, String novoEndereco) {
