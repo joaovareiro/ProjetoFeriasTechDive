@@ -14,7 +14,7 @@ public abstract class MenuProfessor {
                     3 - Definir docentes para uma determinada turma
                     4 - Listar turmas
                     5 - Listar todos os docentes
-                    6 - Listar um docente
+                    6 - Listar um determinado docente
                     7 - Sair""");
 
             op = sc.nextInt();
