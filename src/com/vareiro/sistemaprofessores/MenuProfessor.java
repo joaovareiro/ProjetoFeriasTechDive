@@ -26,7 +26,7 @@ public abstract class MenuProfessor {
                 String nomeTurma = sc.nextLine();
                 System.out.println("Digite a quantidade de alunos:");
                 int qtdAlunos = sc.nextInt();
-                System.out.println("Digite a data de inicio das aulas");
+                System.out.println("Digite a data de inicio das aulas (no formato dd-mm-yyyy)");
                 sc.nextLine();
                 String datainicio = sc.nextLine();
                 System.out.println("""
@@ -86,6 +86,7 @@ public abstract class MenuProfessor {
                                 System.out.println("Docente não encontrado");
                             }
                         }else if (op1 == 2){
+
                             System.out.println("Digite o numero de identificacao do docente que dara as aulas de segunda a terca");
                             sc.nextLine();
                             String idprocurar1 = sc.nextLine();
@@ -94,6 +95,7 @@ public abstract class MenuProfessor {
                             }else{
                                 System.out.println("Docente não encontrado");
                             }
+
                             System.out.println("Digite o numero de identificacao do docente que dara as aulas de quarta a sexta");
                             String idprocurar2 = sc.nextLine();
                             if(Docente.procuraDocente(idprocurar2)!=null){
@@ -169,13 +171,44 @@ public abstract class MenuProfessor {
             } else if (op == 5) {
                 Docente.listaDocentes();
             } else if (op == 6) {
-                //apresentar nome do docente, turma e semana
+                System.out.println("Digite o numero de identificacao do docente:");
+                sc.nextLine();
+                String idprocurar = sc.nextLine();
+                if(Docente.procuraDocente(idprocurar)!=null){
+                    Docente.procuraDocente(idprocurar).identificacaoDocente(6);
+                }else{
+                    System.out.println("Docente não encontrado");
+                }
             } else if (op == 7) {
                 break;
             }
         }
     }
     public static void main(String[] args) {
+        Docente d1 = new Docente("45","Henry Manuel Viana");
+        Docente d2 = new Docente("22","Lucia Vieira Souza");
+        Docente d3 = new Docente("15","Allana Isabella Costa");
+        Docente d4 = new Docente("89","Daniel Arthur Dias");
+        Docente d5 = new Docente("82","Livia Amanda Araujo");
+        Docente d6 = new Docente("66","Tim Figueiredo");
+        Docente d7 = new Docente("56","Guilherme de Cruz Rocha");
+        Turma t1 = new Turma("044","A",21,"Arquitetura de Software","10-01-2022");
+        Turma t2 = new Turma("049","B",16,"Arquitetura de Software","10-01-2022");
+        Turma t3 = new Turma("521","A",18,"C#","17-01-2022");
+        Turma t4 = new Turma("454","B",29,"C#","17-01-2022");
+        Turma t5 = new Turma("418","A",22,"JAVA","17-01-2022");
+        Turma t6 = new Turma("756","A",14,"Estruturas de dados","10-01-2022");
+        Turma t7 = new Turma("126","A",12,"Qualidade de Software","17-01-2022");
+        t1.addDocente(d1);
+        t1.addDocente(d7);
+        t2.addDocente(d1);
+        t2.addDocente(d3);
+        t3.addDocente(d6);
+        t4.addDocente(d2);
+        t5.addDocente(d3);
+        t5.addDocente(d2);
+        t6.addDocente(d5);
+        t7.addDocente(d4);
         menuInicial();
     }
 }

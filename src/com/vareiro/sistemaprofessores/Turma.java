@@ -20,12 +20,18 @@ public class Turma {
         listaTurmas.add(this);
     }
 
-    public void addDocente(Docente a){
-        listaDocentes.add(a);
+    public void addDocente(Docente docente){
+        listaDocentes.add(docente);
+        docente.addTurma(this);
     }
 
     public void limpaHorario(){
         listaDocentes.clear();
+        for (Docente a : Docente.listaTodosDocentes){
+            if(listaDocentes.contains(a)){
+                listaDocentes.remove(a);
+            }
+        }
     }
 
     public String getIdTurma() {
@@ -44,6 +50,15 @@ public class Turma {
         return listaDocentes;
     }
 
+    public int getdocentesTurma(Turma t){
+        int n = 0;
+        for(Docente a: listaDocentes){
+            n++;
+        }
+        return n;
+    }
+
+
     public static int numDocentes(Turma a){
         int numDocentesTurma = 0;
         for(int i=0;i<a.getListaDocentes().size();i++){
@@ -56,19 +71,25 @@ public class Turma {
 
     public static void listaTurmas(){
         for(Turma a : listaTurmas){
-            System.out.println(a);
+            if(numDocentes(a)!=0){
+                a.identificacaoTurma(4);
+            }else{
+                System.out.println("A turma " + a.nomeTurma + " de " + a.assunto + " nao tem professores definidos para essa semana");
+            }
         }
     }
 
-    @Override
-    public String toString() {
-        return "Turma{" +
-                "idTurma='" + idTurma + '\'' +
-                ", nomeTurma='" + nomeTurma + '\'' +
-                ", qtdAlunos=" + qtdAlunos +
-                ", dataInicio='" + dataInicio + '\'' +
-                ", assunto='" + assunto + '\'' +
-                ", listaDocentes=" + listaDocentes +
-                '}';
+    public void identificacaoTurma(int op) {
+        if(op==4){
+            if(getdocentesTurma(this)==1){
+                System.out.printf("A turma " + nomeTurma + " de " + assunto +" terá aula com o docente ");
+                System.out.println((listaDocentes.get(0)).getNomeDocente() + " esta semana" );
+            }else if(getdocentesTurma(this)==2) {
+                System.out.printf("A turma " + nomeTurma + " de " + assunto + " terá aula com os docentes ");
+                System.out.println((listaDocentes.get(0)).getNomeDocente() + " e " + (listaDocentes.get(1)).getNomeDocente() + " esta semana");
+            }
+        }else if(op == 5){
+            System.out.println(nomeTurma + " de " + assunto);
+        }
     }
 }
